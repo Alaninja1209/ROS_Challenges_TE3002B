@@ -34,7 +34,7 @@ if __name__=='__main__':
     #Desired positions
     xd = [2, 3, 1]
     yd = [0, 0, 2]
-    kpr = 5
+    kpr = 0.8
     kpt = 0.3
 
     rospy.init_node('PathGenerator')
