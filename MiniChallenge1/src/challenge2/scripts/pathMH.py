@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import rospy
-import numpy as np
 import math as mt
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32
