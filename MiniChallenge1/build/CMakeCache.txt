@@ -728,6 +728,12 @@ challenge1_BINARY_DIR:STATIC=/home/alfredo1209/Documentos/RoboticaInteligente/Ma
 //Value Computed by CMake
 challenge1_SOURCE_DIR:STATIC=/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge1
 
+//Value Computed by CMake
+challenge2_BINARY_DIR:STATIC=/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge2
+
+//Value Computed by CMake
+challenge2_SOURCE_DIR:STATIC=/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge2
+
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
 
@@ -1245,7 +1251,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

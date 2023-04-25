@@ -1,2 +1,2 @@
-challenge1:puzzlebot_control:puzzlebot_gazebo:puzzlebot_world
+challenge1:challenge2:puzzlebot_control:puzzlebot_gazebo:puzzlebot_world
 -DCATKIN_DEVEL_PREFIX=/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/devel -DCMAKE_INSTALL_PREFIX=/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/install -G Unix Makefiles

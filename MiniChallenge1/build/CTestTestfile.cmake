@@ -6,6 +6,7 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
 subdirs("challenge1")
+subdirs("challenge2")
 subdirs("puzzlebot_world")
 subdirs("puzzlebot_gazebo")
 subdirs("puzzlebot_control")
