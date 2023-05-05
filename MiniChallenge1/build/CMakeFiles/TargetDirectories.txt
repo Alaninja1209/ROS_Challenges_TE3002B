@@ -76,6 +76,13 @@
 /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_world/CMakeFiles/install/local.dir
 /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_world/CMakeFiles/rebuild_cache.dir
 /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_world/CMakeFiles/install.dir
+/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/CMakeFiles/install/strip.dir
+/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/CMakeFiles/edit_cache.dir
+/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/CMakeFiles/list_install_components.dir
+/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/CMakeFiles/test.dir
+/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/CMakeFiles/install/local.dir
+/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/CMakeFiles/rebuild_cache.dir
+/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/CMakeFiles/install.dir
 /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_gazebo/CMakeFiles/install/strip.dir
 /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_gazebo/CMakeFiles/install/local.dir
 /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_gazebo/CMakeFiles/list_install_components.dir

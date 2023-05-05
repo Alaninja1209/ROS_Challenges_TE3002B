@@ -1118,6 +1118,24 @@ puzzlebot_world/preinstall:
 .PHONY : puzzlebot_world/preinstall
 
 #=============================================================================
+# Directory level rules for directory challenge4
+
+# Convenience name for "all" pass in the directory.
+challenge4/all:
+
+.PHONY : challenge4/all
+
+# Convenience name for "clean" pass in the directory.
+challenge4/clean:
+
+.PHONY : challenge4/clean
+
+# Convenience name for "preinstall" pass in the directory.
+challenge4/preinstall:
+
+.PHONY : challenge4/preinstall
+
+#=============================================================================
 # Directory level rules for directory puzzlebot_gazebo
 
 # Convenience name for "all" pass in the directory.

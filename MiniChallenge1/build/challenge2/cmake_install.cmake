@@ -53,10 +53,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/challenge2" TYPE PROGRAM FILES "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge2/catkin_generated/installspace/path_generator.py")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/challenge2" TYPE PROGRAM FILES "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge2/catkin_generated/installspace/pathMH.py")
 endif()
 
