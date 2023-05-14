@@ -5,7 +5,6 @@ from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Image
 import cv2 # OpenCV library
   
 def publish_message():
- 
   # Node is publishing to the video_frames topic using 
   # the message type Image
   pub = rospy.Publisher('video_frames', Image, queue_size=10)

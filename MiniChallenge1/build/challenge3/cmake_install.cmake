@@ -60,3 +60,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/challenge3" TYPE PROGRAM FILES "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge3/catkin_generated/installspace/cvTestPub.py")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/challenge3" TYPE PROGRAM FILES "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge3/catkin_generated/installspace/colorCL.py")
+endif()
+

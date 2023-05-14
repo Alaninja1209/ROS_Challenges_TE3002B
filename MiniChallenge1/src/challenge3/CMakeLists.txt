@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  geometry_msgs
   OpenCV
 )
 
@@ -106,7 +107,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES challenge3
-  CATKIN_DEPENDS roscpp rospy std_msgs sensor_msgs cv2
+  CATKIN_DEPENDS roscpp rospy std_msgs sensor_msgs cv2 geometry_msgs
 #  DEPENDS system_lib
 )
 
@@ -162,7 +163,7 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
-  scripts/cvTest.py scripts/cvTestPub.py
+  scripts/cvTest.py scripts/cvTestPub.py scripts/colorCL.py
 #   scripts/my_python_script
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

@@ -37,6 +37,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge2/scripts/pathTest.py"
   "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge3/CMakeLists.txt"
   "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge3/package.xml"
+  "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge3/scripts/colorCL.py"
   "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge3/scripts/cvTest.py"
   "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/challenge3/scripts/cvTestPub.py"
   "/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/puzzlebot_control/CMakeLists.txt"

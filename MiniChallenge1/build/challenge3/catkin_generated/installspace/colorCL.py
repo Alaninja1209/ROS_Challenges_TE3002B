@@ -3,10 +3,12 @@ import rospy
 import math as mt
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32
+from std_msgs.msg import String
 
 #Declared variables of ros suscriber
 wR = 0.0
 wL = 0.0
+color = " "
 
 def wr_callback(data):
     global wR
@@ -16,7 +18,13 @@ def wl_callback(data):
     global wL
     wL = data.data
 
+def color_callback(data):
+    global color
+    color = data.data
+
 if __name__=='__main__':
+    sub = rospy.Subscriber("/color", String, color_callback)
+
     #Define robot parameters
     wheelRadius = 0.05
     wheelBase = 0.19
@@ -84,6 +92,17 @@ if __name__=='__main__':
                 pV.linear.x = v
                 pV.angular.z = w
                 vPub.publish(pV)
+
+                if(color == "Red"):
+                    pV.linear.x = 0
+                    pV.angular.z = 0
+                    vPub.publish(pV)
+                elif(color == "Yellow"):
+                    pV.linear.x = 0.15
+                    pV.angular.z = w
+                    vPub.publish(pV)
+                else:
+                    print("Sigo")
 
                 t = t + dt
 
