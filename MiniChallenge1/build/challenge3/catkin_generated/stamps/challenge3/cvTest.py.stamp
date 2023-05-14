@@ -139,6 +139,8 @@ def detectColor(img):
 # Define a function to show the image in an OpenCV Window
 def show_image(img):
 
+    img = cv.flip(img, 0) #Gira horizontalmente
+
     detectColor(img)
 
     cv.imshow("Image Window", img)
@@ -163,7 +165,8 @@ def image_callback(img_msg):
     show_image(cv_image)
 
 # Initalize a subscriber to the "/camera/rgb/image_raw" topic with the function "image_callback" as a callback
-sub_image = rospy.Subscriber("video_frames", Image, image_callback)
+#sub_image = rospy.Subscriber("video_frames", Image, image_callback)
+sub_image = rospy.Subscriber("/video_source/raw", Image, image_callback)
 
 # Initialize an OpenCV Window named "Image Window"
 cv.namedWindow("Image Window", 1)
