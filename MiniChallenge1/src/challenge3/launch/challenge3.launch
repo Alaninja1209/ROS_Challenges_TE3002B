@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<launch>
+    <node name="opencv_example" pkg="challenge3" type="cvTest.py"
+output="screen"/>
+    <node name="video_frames" pkg="challenge3" type="cvTestPub.py" output="screen"/>
+</launch>

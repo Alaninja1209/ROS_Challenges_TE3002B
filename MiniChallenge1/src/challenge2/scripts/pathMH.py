@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import rospy
-import numpy as np
 import math as mt
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32
@@ -33,8 +32,8 @@ if __name__=='__main__':
     theta = 0
 
     #Desired positions
-    xd = [2, 2, 3]
-    yd = [0, 2, 2]
+    xd = [2, 2]
+    yd = [0, 2]
     kpr = 2.0
     kpt = 7.5
 

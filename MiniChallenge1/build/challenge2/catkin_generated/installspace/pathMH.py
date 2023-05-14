@@ -1,6 +1,5 @@
 #!/usr/bin/env python2
 import rospy
-import numpy as np
 import math as mt
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float32
@@ -37,6 +36,11 @@ if __name__=='__main__':
     yd = [0, 2, 2]
     kpr = 2.0
     kpt = 7.5
+
+    xd = [2, 3, 1]
+    yd = [0, 0, 2]
+    kpr = 0.8
+    kpt = 0.3
 
     rospy.init_node('PathGenerator')
     rate = rospy.Rate(100)
@@ -96,3 +100,45 @@ if __name__=='__main__':
         pV.angular.z = 0
         vPub.publish(pV)
         rospy.signal_shutdown("Over")
+
+    for i in range(len(xd)):
+        d = 1
+        while (d > 0.1):
+            thetad = mt.atan2((yd[i]-y), (xd[i]-x))
+            d = mt.sqrt((xd[i]-x)**2 + (yd[i]-y)**2)
+            print(d)
+
+            thetae = (theta - thetad)
+            if(thetae > 3.1416):
+                thetae = thetae - 2 * 3.1416
+            elif (thetae < 3.1416):
+                thetae = thetae + 2 * 3.1416
+            
+            w = -kpr * thetae
+            v = vMax * mt.tanh(d*kpt/vMax)
+
+            vr = v + (wheelBase*w)/2
+            vl = v - (wheelBase*w)/2
+
+            v = (vr + vl) / 2
+
+            vF = wheelRadius*(wR + wL)/2
+            wF = wheelRadius * (wR - wL) / wheelBase
+
+            #Compute robot motion
+            vx = vF * mt.cos(theta)
+            vy = vF * mt.sin(theta)
+
+            x = x + vx * dt
+            y = y + vy * dt
+            theta = theta + wF * dt
+
+            pV.linear.x = v
+            pV.angular.z = w
+            vPub.publish(pV)
+
+            t = t + dt
+
+            rate.sleep()
+
+        #i = i + 1
