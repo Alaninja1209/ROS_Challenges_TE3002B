@@ -7,6 +7,9 @@ import cv2 as cv
 import numpy as np
 from cv_bridge import CvBridge, CvBridgeError
 
+# References
+# https://github.com/josefigarola/opencv_pracs.git
+
 # Initialize the ROS Node named 'opencv_example', allow multiple nodes to be run with this name
 rospy.init_node('opencv_example', anonymous=True)
 
