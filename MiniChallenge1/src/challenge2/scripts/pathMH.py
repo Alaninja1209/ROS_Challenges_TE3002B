@@ -32,16 +32,16 @@ if __name__=='__main__':
     theta = 0
 
     #Desired positions
-    xd = [2, 2]
-    yd = [0, 2]
-    kpr = 2.0
-    kpt = 7.5
+    xd = [2, 2,3, 3]
+    yd = [0, 2,1, 3]
+    kpr = 1.5
+    kpt = 4.5
 
     rospy.init_node('PathGenerator')
     rate = rospy.Rate(100)
 
     pV = Twist() #Puzzlebot Velocities
-    vMax = 0.35
+    vMax = 0.20
     i = 0
 
     vPub = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
