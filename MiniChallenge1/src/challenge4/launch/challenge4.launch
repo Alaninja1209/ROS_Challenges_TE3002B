@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<launch>
+    <node name="saveVideo" pkg="challenge4" type="saveIt.py"
+output="screen"/>
+    <node name="video_pub_py" pkg="challenge4" type="saveIt2.py" output="screen"/>
+</launch>

@@ -135,6 +135,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge2/cmake_install.cmake")
   include("/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_world/cmake_install.cmake")
   include("/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge3/cmake_install.cmake")
+  include("/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/challenge4/cmake_install.cmake")
   include("/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_gazebo/cmake_install.cmake")
   include("/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/puzzlebot_control/cmake_install.cmake")
 

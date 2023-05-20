@@ -40,10 +40,10 @@ if __name__=='__main__':
     theta = 0
 
     #Desired positions
-    xd = [2, 2]
-    yd = [0, 2]
-    kpr = 2.0
-    kpt = 7.5
+    xd = [2, 3.5]
+    yd = [0, 0]
+    kpr = 1.5
+    kpt = 4.5
 
     rospy.init_node('PathGenerator')
     rate = rospy.Rate(100)
