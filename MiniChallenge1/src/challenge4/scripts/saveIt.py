@@ -16,9 +16,65 @@ rospy.loginfo("Hello ROS!")
 # Initialize the CvBridge class
 bridge = CvBridge()
 
+def lane_detector(img, vectexs):
+        mask = np.zeros_like(img)
+
+        cv.fillPoly(mask, vectexs, 255)
+
+        mask_img = cv.bitwise_and(img, mask)
+
+        return mask_img
+
+def drawLines(img, lines):
+    img = np.copy(img)
+
+    blank_image = np.zeros((img.shape[0],img.shape[1],3),dtype=np.uint8)
+
+    for i in lines:
+        for x1, x2, y1, y2 in i:
+            cv.line(blank_image,(x1,y1),(x2,y2),(255,0,255),thickness=7)
+
+    img = cv.addWeighted(img,0.8,blank_image,1,0.0)
+
+    return img
+
+def define_roi(img, vertexs):
+    mask = np.zeros(img)
+
+    cv.fillPoly(mask, vertexs, 255)
+
+    masked_img = cv.bitwise_and(img, mask)
+
+    return masked_img
+    
 # Define a function to show the image in an OpenCV Window
 def show_image(img):
     img = cv.flip(img, 0)  # Gira horizontalmente
+
+    height = img.shape[0]
+    width = img.shape[1]
+
+    roi_vertices = [(0,height),(5*width/10,6.8*height/10),(width,height)]
+
+    gray = cv.cvtColor(img, cv.COLOR_RGB2GRAY)
+
+    canny = cv.Canny(gray, 100, 150)
+
+    dilated = cv.dilate(canny, (7,7), iterations=3)
+
+    img_prcss = define_roi(dilated,np.array([roi_vertices],np.int32))
+
+    lines = cv.HoughLinesP(
+            img_prcss,
+            rho=8,
+            threshold=1,
+            theta=np.pi/180,
+            minLineLength=300,
+            maxLineGap=0,
+            lines=np.array([])
+            )
+    
+    img = drawLines(img_prcss,lines)
 
     cv.imshow("Image Window", img)
     cv.waitKey(3)
