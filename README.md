@@ -7,3 +7,4 @@ OpenCV, ROS, Numpy, Yolo (for neural network), cinematic control.
 # Videos of complete challenge proposed from Manchester Robotics
 - Open Loop Control: https://www.youtube.com/watch?v=gzPpJEtqiT4&t=2s
 - Closed Loop Control: https://www.youtube.com/watch?v=EIDmCdG3aCI
+- Light Detector: https://www.youtube.com/watch?v=eewr9YIwWbA&t=5s
