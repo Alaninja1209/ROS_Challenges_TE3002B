@@ -2,7 +2,10 @@
 Hello, my name is Alan Alfredo. This repository instends to save progress of the challenge "Autonomous Robot Vehicle" with the guidance of Manchester Robotics
 
 # Necessary libraries or other resources to implement the challenge
-OpenCV, ROS, Numpy, Yolo (for neural network), cinematic control.
+- Computer Vision
+- Cinematic Control
+- Deep Learning Basis / YOLO Implementation
+- ROS
 
 # Videos of complete challenge proposed from Manchester Robotics
 - Open Loop Control: https://www.youtube.com/watch?v=gzPpJEtqiT4&t=2s
