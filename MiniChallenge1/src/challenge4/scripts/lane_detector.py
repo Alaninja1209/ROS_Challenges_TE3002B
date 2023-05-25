@@ -7,9 +7,6 @@ from std_msgs.msg import Float32
 import cv2 as cv
 from cv_bridge import CvBridge, CvBridgeError
 
-# References
-# 
-
 # Initialize the ROS Node named 'opencv_example', allow multiple nodes to be run with this name
 rospy.init_node('lane_detector', anonymous=True)
 

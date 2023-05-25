@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <launch>
-    <node name="saveVideo" pkg="challenge4" type="saveIt.py"
+    <node name="follow_it" pkg="challenge4" type="follow_it.py"
 output="screen"/>
-    <node name="video_pub_py" pkg="challenge4" type="saveIt2.py" output="screen"/>
+    <node name="lane_detector" pkg="challenge4" type="lane_detector.py" output="screen"/>
 </launch>
