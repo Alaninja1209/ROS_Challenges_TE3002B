@@ -32,8 +32,8 @@ if __name__=='__main__':
     theta = 0
 
     #Desired positions
-    xd = [2, 2,3, 3]
-    yd = [0, 2,1, 3]
+    xd = [2, 2]
+    yd = [0, 2]
     kpr = 1.5
     kpt = 4.5
 
@@ -47,6 +47,15 @@ if __name__=='__main__':
     vPub = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
     wlSub = rospy.Subscriber('/wl', Float32, wl_callback)
     wrSub = rospy.Subscriber('/wr', Float32, wr_callback)
+
+    pV.linear.x = 0.0
+    pV.linear.y = 0.0
+    pV.linear.z = 0.0
+    pV.angular.x = 0.0
+    pV.angular.y = 0.0
+    pV.angular.z = 0.0
+
+    vPub.publish(pV)
 
     while not rospy.is_shutdown():
         for i in range(len(xd)):

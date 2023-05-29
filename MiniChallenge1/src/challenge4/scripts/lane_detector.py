@@ -1,87 +1,91 @@
 #!/usr/bin/env python
 import rospy
-import numpy as np
 from sensor_msgs.msg import Image
 from std_msgs.msg import Float32
 
 import cv2 as cv
+import numpy as np
 from cv_bridge import CvBridge, CvBridgeError
 
 # Initialize the ROS Node named 'opencv_example', allow multiple nodes to be run with this name
 rospy.init_node('lane_detector', anonymous=True)
 
+# Print "Hello ROS!" to the Terminal and to a ROS Log file located in ~/.ros/log/loghash/*.log
+#rospy.loginfo("Hello ROS!")
+
+# Initialize the CvBridge class
 bridge = CvBridge()
 
-class Lane_detector:
-    def __init__(self):
-        self.base_pixel = 240
+def get_line_minimums(grad):
+    left_vec = grad[:50]
+    center_vec = grad[51:429]
+    right_vec = grad[430:]
 
-        self.rate = rospy.Rate(50)
+    left_min_index = np.where(left_vec == np.amin(left_vec))[0][0]
+    center_min_index = np.where(center_vec == np.amin(center_vec))[0][0] + 50
+    right_min_index = np.where(right_vec == np.amin(right_vec))[0][0] + 430
 
-        self.pub_lane_error = rospy.Publisher("/lane_error", Float32, queue_size=10)
+    return left_min_index, right_min_index, center_min_index
 
-        self.sub_image = rospy.Subscriber("/video_source/raw", Image, self.image_callback)
-    
-    def preprocess(self, img):
-        # Resize image
-        img_rs = cv.resize(img, (480, 480))
+def derivate_it(v_sum):
+    derpoints = []
+    for i in range(len(v_sum) - 1):
+        if v_sum[i + 1] is not None:
+            derpoints.append((v_sum[i + 1] - 2 * v_sum[i] + v_sum[i]) / (i - (i - 1)))
+    derpoints.append(0)
+    return derpoints
 
-        gray = cv.cvtColor(img_rs, cv.COLOR_BGR2GRAY)
+def lane_detector(img):
+    # Preprocess image first
+    img_resized = cv.resize(img, (480, 480))
+    gray = cv.cvtColor(img_resized, cv.COLOR_BGR2GRAY)
+    gray_blurred = cv.blur(gray, (13, 13)) # Image with blur
 
-        gray_blur = cv.blur(gray, (13,13))
+    # Getting roi
+    roi_img = gray_blurred[430:480, 0:480]
+    vertical_sum = roi_img.sum(axis=0)
 
-        return gray_blur
-    
-    def define_roi(self, img):
-        return img[430:480, 0:480]
-    
-    def draw_it(self, func):
-        cl_points = []
-        for i in range(len(func) - 1):
-            cl_points.append((func[i + 1] - 2 * func[i] + func[i]) / (i - (i - 1)))
-        cl_points.append(0)
+    # Getting the center of the roi
+    grad = derivate_it(vertical_sum)
+    left_min, right_min, center_min = get_line_minimums(
+        grad
+    )
 
-        return cl_points
-    
-    def calculate_min_lines(self, grad):
-        left_array = grad[:50]
-        center_array = grad[51:429]
-        right_array = grad[430:]
+    # Calculating error
+    error = 240 - center_min #240 reference pixel
 
-        left_min_index = np.where(left_array == np.amin(left_array))[0][0]
-        center_min_index = np.where(center_array == np.amin(center_array))[0][0] + 50
-        right_min_index = np.where(right_array == np.amin(right_array))[0][0] + 430
+    pub_vision_error.publish(Float32(error))
 
-        return left_min_index, center_min_index, right_min_index
-    
-    def calculater_center_line(self):
-        preproccess_img = self.preprocess(img=self.cv_image)
+# Define a function to show the image in an OpenCV Window
+def show_image(img):
 
-        roi_region = self.define_roi(img=preproccess_img)
+    img = cv.flip(img, 0) #Gira horizontalmente
 
-        vertical_sum = roi_region.sum(axis=0)
+    # Detect lanes
+    lane_detector(img)
 
-        grad = self.draw_it(vertical_sum)
+# Define a callback for the Image message
+def image_callback(img_msg):
+    # log some info about the image topic
+    rospy.loginfo(img_msg.header)
 
-        left_min, right_min, center_min = self.calculate_min_lines(grad)
+    # Try to convert the ROS Image message to a CV2 Image
+    try:
+        cv_image = bridge.imgmsg_to_cv2(img_msg, "passthrough")
+    except CvBridgeError as e:
+        rospy.logerr("CvBridge Error: {0}".format(e))
 
-        self.error = self.base_pixel - center_min
+    # Flip the image 90deg
+    #cv_image = cv2.transpose(cv_image)
+    cv_image = cv.flip(cv_image,1)
 
-        self.pub_lane_error.publish(Float32(self.error))
+    # Show the converted image
+    show_image(cv_image)
 
-    # Define a callback for the Image message
-    def image_callback(self, img_msg):
-        # Try to convert the ROS Image message to a CV2 Image
-        try:
-            self.cv_image = self.bridge.imgmsg_to_cv2(img_msg)
-            #cv_image = cv.flip(cv_image,1)
-
-        except CvBridgeError as e:
-            rospy.logerr("CvBridge Error: {0}".format(e))
+# Initalize a subscriber to the "/camera/rgb/image_raw" topic with the function "image_callback" as a callback
+sub_image = rospy.Subscriber("/video_source/raw", Image, image_callback)
+pub_vision_error = rospy.Publisher("/lane_error", Float32, queue_size=10)
 
 # Loop to keep the program from shutting down unless ROS is shut down, or CTRL+C is pressed
 while not rospy.is_shutdown():
-    ld = Lane_detector()
-    ld.calculater_center_line()
-
     rospy.spin()
