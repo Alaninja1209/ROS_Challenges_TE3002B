@@ -1,58 +1,20 @@
+#!/usr/bin/env python2
 import rospy
 from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist
 import math as mt
 
-#Declared variables of ros suscriber
-wR = 0.0
-wL = 0.0
+error = 0.0
 
-def wr_callback(data):
-    global wR
-    wR = data.data
-
-def wl_callback(data):
-    global wL
-    wL = data.data
-
-def vision_error_callback(data):
+def lane_error_callback(data):
+    global error
     error = data.data
-
-def follow_lane():
-    kpt = 40
-    kpr = 2 * mt.sqrt(kpt)
-
-    t = t + dt
-
-    prop = kpt * error
-    der = kpr * (error - last_error) / dt
-
-    w = prop + der
-
-    if w >= 0.15:
-        w = 0.15
-    elif w <= -0.15:
-        w = -0.15
-    
-    if error > 55 or error < -55.0:
-        pV.linear.x = 0.1
-    else:
-        pV.linear.x = 0.20
-        w = 0
-    
-    pV.angular.z = w
-    pub_velocity.publish(pV)
-
-    last_error = error
-
-    rate.sleep()
-
 
 if __name__=='__main__':
     rospy.init_node("follow_it", anonymous=True)
     rate = rospy.Rate(100)
 
-    sub_vision_error = rospy.Subscriber("/vision_error", Float32, vision_error_callback)
+    sub_vision_error = rospy.Subscriber("/lane_error", Float32, lane_error_callback)
     pub_velocity = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
 
     pV = Twist()
@@ -63,12 +25,41 @@ if __name__=='__main__':
     pV.angular.y = 0.0
     pV.angular.z = 0.0
 
-    error = 0.0
     last_error = 0.0
     integral = 0.0
 
-    t = 0
-    dt = 0.01
+    kp = 0.6
+    kd = 2 * mt.sqrt(kp)
+
+    #t = 0
+    #dt = 0.1
+
+    last_time = rospy.get_time()
 
     while not rospy.is_shutdown():
-        follow_lane()
+        current_t = rospy.get_time()
+        dt = current_t - last_time
+        last_time = current_t
+
+        prop = kp * error
+        der = kd * (error - last_error) / dt
+
+        w = prop + der
+
+        print(w)
+
+        if w >= 0.35:
+            w = 2.4
+        elif w <= -0.35:
+            w = -2.2
+        
+        if error > 55 or error < -55.0:
+            pV.linear.x = 0.10
+        else:
+            pV.linear.x = 0.15
+            w = 0
+        
+        pV.angular.z = w
+        pub_velocity.publish(pV)
+
+        last_error = error
