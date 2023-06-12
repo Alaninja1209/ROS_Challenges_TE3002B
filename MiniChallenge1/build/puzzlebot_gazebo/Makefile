@@ -90,28 +90,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -122,6 +100,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target install
 install: preinstall
@@ -134,6 +123,17 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,51 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_py: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-.PHONY : std_srvs_generate_messages_py
-
-# fast build rule for target.
-std_srvs_generate_messages_py/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build
-.PHONY : std_srvs_generate_messages_py/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_lisp: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_eus: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
-
-# Convenience name for target.
 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule:
 	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
 .PHONY : puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/rule
@@ -226,6 +181,21 @@ trajectory_msgs_generate_messages_cpp: puzzlebot_gazebo/CMakeFiles/trajectory_ms
 trajectory_msgs_generate_messages_cpp/fast:
 	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build.make puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/build
 .PHONY : trajectory_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+.PHONY : puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+trajectory_msgs_generate_messages_eus: puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
+
+.PHONY : trajectory_msgs_generate_messages_eus
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_eus/fast:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
+.PHONY : trajectory_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_py.dir/rule:
@@ -288,36 +258,6 @@ trajectory_msgs_generate_messages_lisp/fast:
 .PHONY : trajectory_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_nodejs: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_srvs_generate_messages_nodejs
-
-# fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-gazebo_msgs_generate_messages_cpp: puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : gazebo_msgs_generate_messages_cpp
-
-# fast build rule for target.
-gazebo_msgs_generate_messages_cpp/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/build.make puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/build
-.PHONY : gazebo_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule:
 	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
 .PHONY : puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_py.dir/rule
@@ -348,21 +288,6 @@ gazebo_msgs_generate_messages_eus/fast:
 .PHONY : gazebo_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_py
-
-# fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
 .PHONY : puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/rule
@@ -376,81 +301,6 @@ trajectory_msgs_generate_messages_nodejs: puzzlebot_gazebo/CMakeFiles/trajectory
 trajectory_msgs_generate_messages_nodejs/fast:
 	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
 .PHONY : trajectory_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_cpp: puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_eus: puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_eus
-
-# fast build rule for target.
-sensor_msgs_generate_messages_eus/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
-.PHONY : sensor_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_lisp: puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_lisp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_lisp/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-.PHONY : sensor_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-trajectory_msgs_generate_messages_eus: puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/rule
-
-.PHONY : trajectory_msgs_generate_messages_eus
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_eus/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build.make puzzlebot_gazebo/CMakeFiles/trajectory_msgs_generate_messages_eus.dir/build
-.PHONY : trajectory_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-.PHONY : puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_nodejs: puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-sensor_msgs_generate_messages_nodejs/fast:
-	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make puzzlebot_gazebo/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
-.PHONY : sensor_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
@@ -467,6 +317,81 @@ std_srvs_generate_messages_cpp/fast:
 	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
 .PHONY : std_srvs_generate_messages_cpp/fast
 
+# Convenience name for target.
+puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_lisp: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+
+.PHONY : std_srvs_generate_messages_lisp
+
+# fast build rule for target.
+std_srvs_generate_messages_lisp/fast:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
+.PHONY : std_srvs_generate_messages_lisp/fast
+
+# Convenience name for target.
+puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule
+.PHONY : puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+gazebo_msgs_generate_messages_cpp: puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : gazebo_msgs_generate_messages_cpp
+
+# fast build rule for target.
+gazebo_msgs_generate_messages_cpp/fast:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/build.make puzzlebot_gazebo/CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/build
+.PHONY : gazebo_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_nodejs: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+
+.PHONY : std_srvs_generate_messages_nodejs
+
+# fast build rule for target.
+std_srvs_generate_messages_nodejs/fast:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+.PHONY : std_srvs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_py: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+
+.PHONY : std_srvs_generate_messages_py
+
+# fast build rule for target.
+std_srvs_generate_messages_py/fast:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_py.dir/build
+.PHONY : std_srvs_generate_messages_py/fast
+
+# Convenience name for target.
+puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f CMakeFiles/Makefile2 puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+.PHONY : puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_eus: puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+
+.PHONY : std_srvs_generate_messages_eus
+
+# fast build rule for target.
+std_srvs_generate_messages_eus/fast:
+	cd /home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build && $(MAKE) -f puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make puzzlebot_gazebo/CMakeFiles/std_srvs_generate_messages_eus.dir/build
+.PHONY : std_srvs_generate_messages_eus/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -476,30 +401,25 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... list_install_components"
+	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... std_srvs_generate_messages_py"
-	@echo "... std_srvs_generate_messages_lisp"
-	@echo "... test"
-	@echo "... std_srvs_generate_messages_eus"
 	@echo "... trajectory_msgs_generate_messages_cpp"
+	@echo "... trajectory_msgs_generate_messages_eus"
 	@echo "... gazebo_msgs_generate_messages_py"
 	@echo "... gazebo_msgs_generate_messages_lisp"
 	@echo "... gazebo_msgs_generate_messages_nodejs"
 	@echo "... trajectory_msgs_generate_messages_lisp"
-	@echo "... std_srvs_generate_messages_nodejs"
-	@echo "... gazebo_msgs_generate_messages_cpp"
 	@echo "... trajectory_msgs_generate_messages_py"
 	@echo "... gazebo_msgs_generate_messages_eus"
-	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... trajectory_msgs_generate_messages_nodejs"
-	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... sensor_msgs_generate_messages_eus"
-	@echo "... rebuild_cache"
-	@echo "... sensor_msgs_generate_messages_lisp"
-	@echo "... trajectory_msgs_generate_messages_eus"
-	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... install"
 	@echo "... std_srvs_generate_messages_cpp"
+	@echo "... std_srvs_generate_messages_lisp"
+	@echo "... gazebo_msgs_generate_messages_cpp"
+	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... std_srvs_generate_messages_py"
+	@echo "... std_srvs_generate_messages_eus"
+	@echo "... test"
 .PHONY : help
 
 

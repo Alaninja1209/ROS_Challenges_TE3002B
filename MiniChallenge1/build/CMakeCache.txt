@@ -749,6 +749,15 @@ challenge4_SOURCE_DIR:STATIC=/home/alfredo1209/Documentos/RoboticaInteligente/Ma
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/melodic/share/cpp_common/cmake
 
+//The directory containing a CMake configuration file for cv_bridge.
+cv_bridge_DIR:PATH=/opt/ros/melodic/share/cv_bridge/cmake
+
+//Value Computed by CMake
+final_challenge_BINARY_DIR:STATIC=/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/build/final_challenge
+
+//Value Computed by CMake
+final_challenge_SOURCE_DIR:STATIC=/home/alfredo1209/Documentos/RoboticaInteligente/Manchester/MiniChallenge1/src/final_challenge
+
 //The directory containing a CMake configuration file for gazebo.
 gazebo_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/gazebo
 
@@ -1266,7 +1275,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=12
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

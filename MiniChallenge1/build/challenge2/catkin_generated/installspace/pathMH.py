@@ -32,8 +32,8 @@ if __name__=='__main__':
     theta = 0
 
     #Desired positions
-    xd = [2, 2]
-    yd = [0, 2]
+    xd = [2, 3]
+    yd = [2, 2]
     kpr = 1.5
     kpt = 4.5
 
