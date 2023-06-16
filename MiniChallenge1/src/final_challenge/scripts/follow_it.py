@@ -5,6 +5,47 @@ from geometry_msgs.msg import Twist
 import math as mt
 
 error = 0.0
+pV = Twist()
+pub_velocity = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
+
+def TL_Detector(color, distance, movement):
+    # Return two values for x and z
+
+    if color == 'red' and distance < 400 and movement == 'forward':
+        return 0.0, 0.0  
+        
+    if color == 'yellow' and distance > 400 and movement == 'forward':
+        return 0.1, None  
+        
+    if color == 'yellow' and distance < 400:
+        return 0.0, 0.0  
+        
+    if color == 'green' and movement == 'forward':
+        return 0.285, None  
+        
+    if color == 'stop' and distance < 200:
+        return 0.0, 0.0  
+        
+    if color == 'red' and distance < 400 and movement == 'turn':
+        return 0.0, 0.0  
+        
+    if color == 'yellow' and distance > 400 and movement == 'turn':
+        return 0.1, None  
+        
+    if color == 'yellow' and distance < 400:
+        return 0.0, 0.0  
+        
+    return 0.0, 0.0  
+
+def turn_right():
+    pV.linear.z = 15.0
+
+    pub_velocity.publish(pV)
+
+def turn_left():
+    pV.linear.z = -15.0
+
+    pub_velocity.publish(pV)
 
 def stop():
     pV.linear.x = 0.0
@@ -35,9 +76,7 @@ if __name__=='__main__':
     rate = rospy.Rate(100)
 
     sub_vision_error = rospy.Subscriber("/lane_error", Float32, lane_error_callback)
-    pub_velocity = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
 
-    pV = Twist()
     pV.linear.x = 0.0
     pV.linear.y = 0.0
     pV.linear.z = 0.0
