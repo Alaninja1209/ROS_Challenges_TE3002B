@@ -16,12 +16,8 @@ rospy.init_node('sign_detector', anonymous=True)
 # Initialize the CvBridge class
 bridge = CvBridge()
 
-def load_model():
-    classes = None
-    with open(r'\src\final_challenge\scripts\classes', 'rt') as f:
-        classes = f.read().rstrip('\n').split('\n')
-        f.close()
-    return classes
+def load_model(cfg_path, weights_path):
+    return cv.dnn.readNetFromDarknet(cfg_path, weights_path)
 
 def load_classes(classes_path):
     classes = None
@@ -66,7 +62,7 @@ def post_process(frame, output_layers, classes, confidence_threshold=0.5):
 def sign_detector(img):
     yolo_cfg_path = "model/yolov4-tiny-custom.cfg"
     yolo_weights_path = "model/yolov4-tiny-custom_best.weights"
-    classes_path = "model/classes.names"
+    classes_path = "\src\final_challenge\scripts\classes"
 
     classes = load_classes(classes_path)
     yolo_model = load_model(yolo_cfg_path, yolo_weights_path)
@@ -78,7 +74,9 @@ def sign_detector(img):
 # Define a function to show the image in an OpenCV Window
 def show_image(img):
 
-    img = cv.flip(img, 0) #Gira horizontalmente
+    img = cv.flip(img, 0)
+    
+    sign_detector(img) 
 
 # Define a callback for the Image message
 def image_callback(img_msg):
