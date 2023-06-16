@@ -9,7 +9,6 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
 rospy.init_node('sign_detector', anonymous=True)
-
 # Print "Hello ROS!" to the Terminal and to a ROS Log file located in ~/.ros/log/loghash/*.log
 #rospy.loginfo("Hello ROS!")
 
@@ -98,6 +97,9 @@ def image_callback(img_msg):
 
 # Initalize a subscriber to the "/camera/rgb/image_raw" topic with the function "image_callback" as a callback
 sub_image = rospy.Subscriber("/video_source/raw", Image, image_callback)
+
+# Solo si la Jetson no muere
+#self.sign_detector = rospy.Publisher('/object_detection', Int32MultiArray, queue_size=10)
 
 # Loop to keep the program from shutting down unless ROS is shut down, or CTRL+C is pressed
 while not rospy.is_shutdown():

@@ -11,28 +11,28 @@ pub_velocity = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
 def TL_Detector(color, distance, movement):
     # Return two values for x and z
 
-    if color == 'red' and distance < 400 and movement == 'forward':
+    if color == "red" and distance < 400 and movement == 'forward':
         return 0.0, 0.0  
         
-    if color == 'yellow' and distance > 400 and movement == 'forward':
+    if color == "yellow" and distance > 400 and movement == 'forward':
         return 0.1, None  
         
-    if color == 'yellow' and distance < 400:
+    if color == "yellow" and distance < 400:
         return 0.0, 0.0  
         
-    if color == 'green' and movement == 'forward':
+    if color == "green" and movement == 'forward':
         return 0.285, None  
         
-    if color == 'stop' and distance < 200:
+    if color == "stop" and distance < 200:
         return 0.0, 0.0  
         
-    if color == 'red' and distance < 400 and movement == 'turn':
+    if color == "red" and distance < 400 and movement == 'turn':
         return 0.0, 0.0  
         
-    if color == 'yellow' and distance > 400 and movement == 'turn':
+    if color == "yellow" and distance > 400 and movement == 'turn':
         return 0.1, None  
         
-    if color == 'yellow' and distance < 400:
+    if color == "yellow" and distance < 400:
         return 0.0, 0.0  
         
     return 0.0, 0.0  
